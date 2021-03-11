@@ -23,6 +23,7 @@ namespace DataBindingExercise
         public MainWindow()
         {
             InitializeComponent();
+            toDoListControl.DataContext = new ToDoList();
         }
     }
 }

@@ -33,9 +33,12 @@ namespace DataBindingExercise
         /// <param name="e">The event args</param>
         void OnAddTaskClick(object sender, RoutedEventArgs e)
         {
-            var task = new ToDoItem(newTaskTextBox.Text);
-            taskListView.Items.Add(task);
-            newTaskTextBox.Clear();
+            if(DataContext is ToDoList list)
+            {
+                var task = new ToDoItem(newTaskTextBox.Text);
+                list.Add(task);
+                newTaskTextBox.Clear();
+            }
         }
     }
 }

@@ -10,12 +10,20 @@
         <StackPanel DockPanel.Dock="Top">
             <TextBlock FontSize="20" TextAlignment="Center" Foreground="White">To Do List</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="0" Foreground="White"/>
+                <TextBlock Text="{Binding Path=IncompleteCount}" Foreground="White"/>
                 <TextBlock Margin="10 0 0 0" Foreground="White">Items Remaining</TextBlock>
             </StackPanel>
         </StackPanel>
         <Button DockPanel.Dock="Bottom" Margin="10 0 10 10" Click="OnAddTaskClick">Add Task</Button>
         <TextBox Name="newTaskTextBox" DockPanel.Dock="Bottom" Margin="10 10 10 0"/>
-        <ListView Name="taskListView"/>
+        <ListView Name="taskListView" ItemsSource="{Binding}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<CheckBox IsChecked="{Binding Path=Complete}">
+						<TextBlock Text="{Binding Path=Task}"/>
+					</CheckBox>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
     </DockPanel>
 </UserControl>
